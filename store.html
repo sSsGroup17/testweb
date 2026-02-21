@@ -1,1 +1,121 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <link rel="stylesheet" href="styles.css">\n    <title>Shopping Website</title>\n</head>\n<body>\n    <header>\n        <h1>Welcome to Our Shopping Website</h1>\n        <nav>\n            <button onclick="logout()">Logout</button>\n        </nav>\n    </header>\n    <main>\n        <section id="products">\n            <article class="product">\n                <h2>Product 1</h2>\n                <p>Price: $10.00</p>\n                <button onclick="addToCart('Product 1')">Add to Cart</button>\n            </article>\n            <article class="product">\n                <h2>Product 2</h2>\n                <p>Price: $20.00</p>\n                <button onclick="addToCart('Product 2')">Add to Cart</button>\n            </article>\n            <article class="product">\n                <h2>Product 3</h2>\n                <p>Price: $30.00</p>\n                <button onclick="addToCart('Product 3')">Add to Cart</button>\n            </article>\n        </section>\n        <section id="contact">\n            <h2>Contact Us</h2>\n            <form>\n                <label for="name">Name:</label>\n                <input type="text" id="name" name="name" required>\n                <label for="email">Email:</label>\n                <input type="email" id="email" name="email" required>\n                <input type="submit" value="Submit">\n            </form>\n        </section>\n    </main>\n    <script>\n        function addToCart(product) {\n            alert(product + ' has been added to your cart.');\n        }\n        function logout() {\n            alert('You have logged out.');\n        }\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #333;
+        }
+        header {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 10px;
+            text-align: center;
+            background: #fff;
+            transition: transform 0.2s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .contact-form {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Online Shopping Store!</h1>
+    </header>
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+        <p id="cart-contents">No items in cart</p>
+        <p>Total: <span id="total-price">$0.00</span></p>
+    </div>
+    <div id="products">
+        <div class="product" data-price="29.99" data-name="Product 1">
+            <h2>Product 1</h2>
+            <p>Description for Product 1.</p>
+            <p>Rating: ★★★★☆</p>
+            <button onclick="addToCart('Product 1', 29.99)">Add to Cart</button>
+        </div>
+        <div class="product" data-price="39.99" data-name="Product 2">
+            <h2>Product 2</h2>
+            <p>Description for Product 2.</p>
+            <p>Rating: ★★★☆☆</p>
+            <button onclick="addToCart('Product 2', 39.99)">Add to Cart</button>
+        </div>
+        <div class="product" data-price="49.99" data-name="Product 3">
+            <h2>Product 3</h2>
+            <p>Description for Product 3.</p>
+            <p>Rating: ★★★★★</p>
+            <button onclick="addToCart('Product 3', 49.99)">Add to Cart</button>
+        </div>
+        <div class="product" data-price="19.99" data-name="Product 4">
+            <h2>Product 4</h2>
+            <p>Description for Product 4.</p>
+            <p>Rating: ★★★★☆</p>
+            <button onclick="addToCart('Product 4', 19.99)">Add to Cart</button>
+        </div>
+        <div class="product" data-price="59.99" data-name="Product 5">
+            <h2>Product 5</h2>
+            <p>Description for Product 5.</p>
+            <p>Rating: ★★★★★</p>
+            <button onclick="addToCart('Product 5', 59.99)">Add to Cart</button>
+        </div>
+        <div class="product" data-price="9.99" data-name="Product 6">
+            <h2>Product 6</h2>
+            <p>Description for Product 6.</p>
+            <p>Rating: ★★★★☆</p>
+            <button onclick="addToCart('Product 6', 9.99)">Add to Cart</button>
+        </div>
+    </div>
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" rows="4" required></textarea><br>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        let cart = [];
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCart();
+        }
+        function updateCart() {
+            const cartContents = document.getElementById('cart-contents');
+            const totalPrice = document.getElementById('total-price');
+            cartContents.innerHTML = cart.map(item => item.name).join(', ');
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalPrice.innerHTML = '$' + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
