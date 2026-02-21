@@ -1,10 +1,60 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Online Shopping Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Shopping Website</title>
 </head>
 <body>
-    <h1>Welcome to Our Online Store!</h1>
-    <p>Discover an amazing variety of products.</p>
-    <p><a href="products.html">View our products</a></p>
+    <header>
+        <h1>Welcome to Our Shopping Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Our Products</h2>
+            <div class="product">
+                <h3>Product 1</h3>
+                <p>Description of Product 1</p>
+                <p>Price: $10.00</p>
+                <button>Add to cart</button>
+            </div>
+            <div class="product">
+                <h3>Product 2</h3>
+                <p>Description of Product 2</p>
+                <p>Price: $20.00</p>
+                <button>Add to cart</button>
+            </div>
+            <!-- More products can be added here -->
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Shopping Website. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
